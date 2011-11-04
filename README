@@ -1,0 +1,15 @@
+my-endwise.vim
+
+my-endwise.vim is improved endwise.vim. ( http://www.vim.org/scripts/script.php?script_id=2386 )
+my-endwise.vim solves problem occur when <CR> is rekeymaping and <CR> is input with endwise.vim.
+
+You must set <CR> keymap for push back "<Plug>DiscretionaryEnd".
+
+example:
+    [before] inoremap <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup()."\<CR>" : "\<CR>"
+
+    |
+    V
+
+    [after]  imap <buffer> <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup()."\<CR>\<Plug>DiscretionaryEnd" : "\<CR>\<Plug>DiscretionaryEnd"
+
