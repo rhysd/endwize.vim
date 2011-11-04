@@ -1,7 +1,7 @@
 my-endwise.vim
 
 my-endwise.vim is improved endwise.vim. ( http://www.vim.org/scripts/script.php?script_id=2386 )
-my-endwise.vim solves problem which occurs when <CR> is rekeymaping and <CR> is input with endwise.vim.
+my-endwise.vim solves problem which occurs when <CR> is remaping and <CR> is input with endwise.vim.
 
 You must set <CR> keymap for push back "<Plug>DiscretionaryEnd".
 
