@@ -4,22 +4,22 @@ set cpo&vim
 " Functions {{{1
 
 function! s:mysearchpair(beginpat,endpat,synpat)
-    let g:endwise_syntaxes = ""
+    let g:endwize_syntaxes = ""
     let s:lastline = line('.')
     call s:synname()
-    let line = searchpair(a:beginpat,'',a:endpat,'Wn','<SID>synname() !~# "^'.substitute(a:synpat,'\\','\\\\','g').'$"',line('.')+50)
+    let line = searchpair(a:beginpat,'',a:endpat,'Wn','<SID>synname() !~# "^'.substitute(a:synpat,'\\','\\\\','g').'$"',line('.')+g:endwize_search_lines)
     return line
 endfunction
 
-function! my_endwise#crend(always)
+function! endwize#crend()
     let n = ""
-    if !exists("b:endwise_addition") || !exists("b:endwise_words") || !exists("b:endwise_syngroups")
+    if !exists("b:endwize_addition") || !exists("b:endwize_words") || !exists("b:endwize_syngroups")
         return n
     end
-    let synpat  = '\%('.substitute(b:endwise_syngroups,',','\\|','g').'\)'
-    let wordchoice = '\%('.substitute(b:endwise_words,',','\\|','g').'\)'
-    if exists("b:endwise_pattern")
-        let beginpat = substitute(b:endwise_pattern,'&',substitute(wordchoice,'\\','\\&','g'),'g')
+    let synpat  = '\%('.substitute(b:endwize_syngroups,',','\\|','g').'\)'
+    let wordchoice = '\%('.substitute(b:endwize_words,',','\\|','g').'\)'
+    if exists("b:endwize_pattern")
+        let beginpat = substitute(b:endwize_pattern,'&',substitute(wordchoice,'\\','\\&','g'),'g')
     else
         let beginpat = '\<'.wordchoice.'\>'
     endif
@@ -27,12 +27,11 @@ function! my_endwise#crend(always)
     let space = matchstr(getline(lnum),'^\s*')
     let col  = match(getline(lnum),beginpat) + 1
     let word  = matchstr(getline(lnum),beginpat)
-    let endpat = substitute(word,'.*',b:endwise_addition,'')
+    let endpat = substitute(word,'.*',b:endwize_addition,'')
+    echo endpat
     let y = n.endpat."\<C-O>O"
-    let endpat = '\<'.substitute(wordchoice,'.*',b:endwise_addition,'').'\>'
-    if a:always
-        return y
-    elseif col <= 0 || synIDattr(synID(lnum,col,1),'name') !~ '^'.synpat.'$'
+    let endpat = '\<'.substitute(wordchoice,'.*',b:endwize_addition,'').'\>'
+    if col <= 0 || synIDattr(synID(lnum,col,1),'name') !~ '^'.synpat.'$'
         return n
     elseif getline('.') !~ '^\s*#\=$'
         return n
@@ -44,7 +43,6 @@ function! my_endwise#crend(always)
     if line == 0
         let even = 0
     endif
-    let g:endwise_debug = line . "(" . even . ")"
     if !even && line == line('.') + 1
         return y
     endif
@@ -62,7 +60,7 @@ function! s:synname()
     endwhile
 
     let s = synIDattr(synID(line('.'),col('.'),1),'name')
-    let g:endwise_syntaxes = g:endwise_syntaxes . line('.').','.col('.')."=".s."\n"
+    let g:endwize_syntaxes = g:endwize_syntaxes . line('.').','.col('.')."=".s."\n"
     let s:lastline = line('.')
     return s
 endfunction
