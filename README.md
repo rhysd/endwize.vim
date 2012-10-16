@@ -1,6 +1,6 @@
 ## endwize.vim
 
-This is a clone of endwise.vim( http://www.vim.org/scripts/script.php?script\_id=2386 )
+This is a clone of endwise.vim. ( http://www.vim.org/scripts/script.php?script\_id=2386 )
 This plugin supports `if end`-like syntax input.
 
 ### mapping
