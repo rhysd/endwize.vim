@@ -29,6 +29,11 @@ augroup endwize " {{{1
                 \ let b:endwize_addition = '\=submatch(0)==#"if" ? "fi" : submatch(0)==#"case" ? "esac" : "done"' |
                 \ let b:endwize_words = 'if,case,do' |
                 \ let b:endwize_syngroups = 'shConditional,zshConditional'
+    autocmd FileType lua
+                \ let b:endwise_addition = '\=submatch(0)=="{" ? "}" : "end"' |
+                \ let b:endwise_words = 'function,do,then' |
+                \ let b:endwise_pattern = '^\s*\zs\%(function\|do\|then\)\>\%(.*[^.:@$]\<end\>\)\@!\|\<then\|do\ze\%(\s*|.*|\)\=\s*$' |
+                \ let b:endwise_syngroups = 'luaFunction,luaStatement,luaCond'
 augroup END " }}}1
 
 " Maps {{{1
