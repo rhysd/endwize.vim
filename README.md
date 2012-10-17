@@ -19,8 +19,8 @@ mapping would be like below.
 inoremap <silent><CR> <CR><C-r>=endwize#crend()<CR>
 ```
 
-For example, when you want to use both `smart_close_popup()` of neocomplcache-snippets-complete,
-mapping would be like below.
+For example, when you want to use both `smart_close_popup()` of neocomplcache-snippets-complete
+and endwize.vim at typing `<CR>`, mapping would be like below.
 
 ```
 inoremap <silent><expr><CR> (pumvisible() ? neocomplcache#smart_close_popup() : "")."\<CR>\<C-r>=endwize#crend()\<CR>"
