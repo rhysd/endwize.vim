@@ -43,7 +43,7 @@ augroup endwize " {{{
                 \ let b:endwize_addition = '#endif' |
                 \ let b:endwize_words = '#if,#ifdef,#ifndef' |
                 \ let b:endwize_pattern = '^\s*#if\%(\|def\|ndef\)\s\+.\+$' |
-                \ let b:endwize_syngroups = 'cPreCondit' |
+                \ let b:endwize_syngroups = 'cPreCondit,cCppInWrapper'
                 \ let b:endwize_comment = '//'
 augroup END " }}}
 
