@@ -28,7 +28,6 @@ function! endwize#crend()
     let col  = match(getline(lnum),beginpat) + 1
     let word  = matchstr(getline(lnum),beginpat)
     let endpat = substitute(word,'.*',b:endwize_addition,'')
-    echo endpat
     let y = n.endpat."\<C-O>O"
     let endpat = '\<'.substitute(wordchoice,'.*',b:endwize_addition,'').'\>'
     if col <= 0 || synIDattr(synID(lnum,col,1),'name') !~ '^'.synpat.'$'
