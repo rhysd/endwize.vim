@@ -37,13 +37,13 @@ augroup endwize " {{{
                 \ let b:endwize_addition = '\=submatch(0)=="{" ? "}" : "end"' |
                 \ let b:endwize_words = 'function,do,then' |
                 \ let b:endwize_pattern = '^\s*\zs\%(function\|do\|then\)\>\%(.*[^.:@$]\<end\>\)\@!\|\<then\|do\ze\%(\s*|.*|\)\=\s*$' |
-                \ let b:endwize_syngroups = 'luaFunction,luaStatement,luaCond'
+                \ let b:endwize_syngroups = 'luaFunction,luaStatement,luaCond' |
                 \ let b:endwize_comment = '--'
     autocmd FileType c,cpp
                 \ let b:endwize_addition = '#endif' |
                 \ let b:endwize_words = '#if,#ifdef,#ifndef' |
                 \ let b:endwize_pattern = '^\s*#if\%(\|def\|ndef\)\s\+.\+$' |
-                \ let b:endwize_syngroups = 'cPreCondit,cCppInWrapper'
+                \ let b:endwize_syngroups = 'cPreCondit,cCppInWrapper' |
                 \ let b:endwize_comment = '//'
 augroup END " }}}
 
