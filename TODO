@@ -1,5 +1,0 @@
-if hoge(huga)
-
-endif " if hoge(huga) <- これを挿入できるようにする
-
-C++ で #ifdef も補完できるようにする
