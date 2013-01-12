@@ -14,6 +14,7 @@ set cpo&vim
 
 let g:endwize_search_lines = get(g:, 'endwize_search_lines', 1000)
 let g:endwize_add_info_filetypes = get(g:, 'endwize_add_info_filetypes', [])
+let g:endwize_add_verbose_info_filetypes = get(g:, 'endwize_add_verbose_info_filetypes', [])
 
 augroup endwize " {{{
     autocmd!
@@ -42,7 +43,7 @@ augroup endwize " {{{
     autocmd FileType c,cpp
                 \ let b:endwize_addition = '#endif' |
                 \ let b:endwize_words = '#if,#ifdef,#ifndef' |
-                \ let b:endwize_pattern = '^\s*#if\%(\|def\|ndef\)\s\+.\+$' |
+                \ let b:endwize_pattern = '^\s*#if\%(\|def\|ndef\)' |
                 \ let b:endwize_syngroups = 'cPreCondit,cCppInWrapper' |
                 \ let b:endwize_comment = '//'
 augroup END " }}}

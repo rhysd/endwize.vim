@@ -37,7 +37,11 @@ function! endwize#crend()
     let endpat = substitute(word,'.*',b:endwize_addition,'')
     if index(g:endwize_add_info_filetypes, &l:filetype) >= 0
                 \ && exists('b:endwize_comment')
-        let endpat .= ' '.b:endwize_comment.' '.matchstr(getline(lnum), '^\s*\zs.\+\ze\s*$')
+        if index(g:endwize_add_verbose_info_filetypes, &l:filetype) >= 0
+            let endpat .= ' '.b:endwize_comment.' '.matchstr(getline(lnum), '^\s*\zs.\+\ze\s*$')
+        else
+            let endpat .= ' '.b:endwize_comment.' '.word
+        endif
     endif
     let ret = endpat."\<C-O>O"
     let endpat = '\<'.substitute(wordchoice,'.*',b:endwize_addition,'').'\>'
