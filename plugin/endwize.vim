@@ -16,7 +16,7 @@ let g:endwize_search_lines = get(g:, 'endwize_search_lines', 1000)
 let g:endwize_add_info_filetypes = get(g:, 'endwize_add_info_filetypes', [])
 
 augroup endwize " {{{
-    au!
+    autocmd!
     autocmd FileType ruby
                 \ let b:endwize_addition = '\=submatch(0)=="{" ? "}" : "end"' |
                 \ let b:endwize_words = 'module,class,def,if,unless,case,while,until,begin,do' |
